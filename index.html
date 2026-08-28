@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6efdf">
+  <meta name="description" content="A messy-on-purpose sticky note board for capturing, doodling, and organizing ideas.">
+  <title>Notesguy — make a mess, find the idea</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="idea-dock" aria-label="Add an idea">
+      <header class="brand">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <div>
+          <p class="eyebrow">Avery's brain, but visible</p>
+          <h1>notes<span>guy</span></h1>
+        </div>
+      </header>
+
+      <div class="scribble" aria-hidden="true"></div>
+
+      <form id="noteForm" class="note-maker">
+        <label for="noteInput">Quick—what are you thinking?</label>
+        <textarea id="noteInput" maxlength="240" placeholder="Type the half-baked idea here…" required></textarea>
+        <div class="maker-row">
+          <div class="swatches" aria-label="Choose note color">
+            <button class="swatch is-selected" type="button" data-color="yellow" aria-label="Yellow note"></button>
+            <button class="swatch" type="button" data-color="pink" aria-label="Pink note"></button>
+            <button class="swatch" type="button" data-color="blue" aria-label="Blue note"></button>
+          </div>
+          <button class="add-note" type="submit">stick it! <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+
+      <p class="tiny-note">No logins. No judgment. Saved on this device.</p>
+    </aside>
+
+    <section class="board-wrap" aria-label="Brainstorm board">
+      <div class="board-heading">
+        <div>
+          <p class="kicker">TODAY'S BIG MESS</p>
+          <h2>Make a mess. <em>Find the idea.</em></h2>
+        </div>
+        <div class="live-count"><strong id="noteCount">0</strong><span>ideas<br>in motion</span></div>
+      </div>
+
+      <div id="board" class="board">
+        <canvas id="doodleCanvas" aria-label="Doodle layer"></canvas>
+        <div id="itemsLayer" class="items-layer"></div>
+        <div id="emptyState" class="empty-state" hidden>
+          <span aria-hidden="true">↖</span>
+          <p>Your brilliant mess<br>starts over there.</p>
+        </div>
+      </div>
+
+      <nav class="toolbelt" aria-label="Brainstorm tools">
+        <button id="doodleBtn" class="tool" type="button" aria-pressed="false"><span class="tool-icon doodle-icon" aria-hidden="true"></span>Doodle</button>
+        <button id="arrowBtn" class="tool" type="button"><span class="tool-icon" aria-hidden="true">↗</span>Add arrow</button>
+        <button id="tidyBtn" class="tool" type="button"><span class="tool-icon" aria-hidden="true">▦</span>Tidy up</button>
+        <button id="undoBtn" class="tool" type="button"><span class="tool-icon" aria-hidden="true">↶</span>Undo</button>
+        <button id="clearBtn" class="tool danger" type="button"><span class="tool-icon" aria-hidden="true">×</span>Clear</button>
+      </nav>
+
+      <div id="modeHint" class="mode-hint" role="status" aria-live="polite">Drag notes anywhere. Double-click one to edit.</div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
