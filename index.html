@@ -43,25 +43,59 @@
           <p class="kicker">TODAY'S BIG MESS</p>
           <h2>Make a mess. <em>Find the idea.</em></h2>
         </div>
-        <div class="live-count"><strong id="noteCount">0</strong><span>ideas<br>in motion</span></div>
+        <div class="heading-actions">
+          <div class="live-count"><strong id="noteCount">0</strong><span>ideas<br>in motion</span></div>
+          <button id="savedBtn" class="saved-tab" type="button" aria-expanded="false" aria-controls="savedDrawer">
+            <span aria-hidden="true">⌑</span> Saved <strong id="savedCount">0</strong>
+          </button>
+        </div>
       </div>
 
       <div id="board" class="board">
+        <div id="groupsLayer" class="groups-layer"></div>
         <canvas id="doodleCanvas" aria-label="Doodle layer"></canvas>
         <div id="itemsLayer" class="items-layer"></div>
         <div id="emptyState" class="empty-state" hidden>
           <span aria-hidden="true">↖</span>
           <p>Your brilliant mess<br>starts over there.</p>
         </div>
+        <div id="selectionDock" class="selection-dock" hidden>
+          <div class="selection-copy">
+            <strong id="selectionTitle">Pick notes</strong>
+            <span><b id="selectionCount">0</b> selected</span>
+          </div>
+          <div id="batchTools" class="batch-tools">
+            <button class="mini-swatch yellow" type="button" data-batch-color="yellow" aria-label="Make selected notes yellow"></button>
+            <button class="mini-swatch pink" type="button" data-batch-color="pink" aria-label="Make selected notes pink"></button>
+            <button class="mini-swatch blue" type="button" data-batch-color="blue" aria-label="Make selected notes blue"></button>
+            <label class="tag-field"><span>#</span><input id="tagInput" maxlength="18" placeholder="add tag" aria-label="Tag selected notes"></label>
+            <button id="tagBtn" class="dock-action" type="button">Tag</button>
+            <button id="groupBtn" class="dock-action strong" type="button">Group</button>
+          </div>
+          <button id="archiveSelectedBtn" class="dock-action strong" type="button" hidden>Save selected</button>
+          <button id="cancelSelectionBtn" class="dock-close" type="button" aria-label="Cancel selection">×</button>
+        </div>
       </div>
 
       <nav class="toolbelt" aria-label="Brainstorm tools">
         <button id="doodleBtn" class="tool" type="button" aria-pressed="false"><span class="tool-icon doodle-icon" aria-hidden="true"></span>Doodle</button>
+        <button id="eraserBtn" class="tool" type="button" aria-pressed="false"><span class="tool-icon" aria-hidden="true">▱</span>Eraser</button>
+        <button id="saveBtn" class="tool" type="button" aria-pressed="false"><span class="tool-icon" aria-hidden="true">⌑</span>Save</button>
+        <button id="selectBtn" class="tool" type="button" aria-pressed="false"><span class="tool-icon" aria-hidden="true">☑</span>Select</button>
         <button id="arrowBtn" class="tool" type="button"><span class="tool-icon" aria-hidden="true">↗</span>Add arrow</button>
         <button id="tidyBtn" class="tool" type="button"><span class="tool-icon" aria-hidden="true">▦</span>Tidy up</button>
         <button id="undoBtn" class="tool" type="button"><span class="tool-icon" aria-hidden="true">↶</span>Undo</button>
         <button id="clearBtn" class="tool danger" type="button"><span class="tool-icon" aria-hidden="true">×</span>Clear</button>
       </nav>
+
+      <aside id="savedDrawer" class="saved-drawer" aria-label="Saved notes" hidden>
+        <header>
+          <div><p>THE KEEP PILE</p><h3>Saved notes</h3></div>
+          <button id="closeSavedBtn" type="button" aria-label="Close saved notes">×</button>
+        </header>
+        <p class="drawer-help">Old thoughts, safely tucked away. Restore one whenever it becomes useful again.</p>
+        <div id="savedList" class="saved-list"></div>
+      </aside>
 
       <div id="modeHint" class="mode-hint" role="status" aria-live="polite">Drag notes anywhere. Double-click one to edit.</div>
     </section>
