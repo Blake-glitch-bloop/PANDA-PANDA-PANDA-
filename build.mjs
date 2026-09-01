@@ -74,9 +74,7 @@ export default {
       status: 200,
       headers: {
         'content-type': asset.type,
-        'cache-control': url.pathname === '/' || url.pathname === '/index.html'
-          ? 'no-cache'
-          : 'public, max-age=3600',
+        'cache-control': 'no-cache, must-revalidate',
         'x-content-type-options': 'nosniff'
       }
     });
